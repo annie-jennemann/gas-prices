@@ -53,7 +53,7 @@ jobs:
           echo 'R_LIBS_USER=~/Rlib' >> ~/.Renviron
           echo 'options(repos = c(CRAN = "https://cloud.r-project.org"))' >> ~/.Rprofile
           Rscript -e 'install.packages("tidyverse", dependencies = TRUE, lib="~/Rlib")'
-          Rscript -e 'install.packages(c("jsonlite", "remotes", "magick", "usethis"), dependencies = TRUE, lib="~/Rlib")'
+          Rscript -e 'install.packages(c("jsonlite", "remotes", "magick", "usethis", "V8"), dependencies = TRUE, lib="~/Rlib")'
           Rscript -e 'remotes::install_github("munichrocker/DatawRappr", lib="~/Rlib", auth_token=Sys.getenv("GITHUB_PAT"))'
           Rscript -e '.libPaths("~/Rlib"); if (!require("tidyverse", lib.loc = "~/Rlib")) stop("tidyverse did not install")'
 
