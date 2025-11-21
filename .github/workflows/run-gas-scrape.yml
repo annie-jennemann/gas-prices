@@ -53,6 +53,7 @@ jobs:
           echo 'R_LIBS_USER=~/Rlib' >> ~/.Renviron
           echo 'options(repos = c(CRAN = "https://cloud.r-project.org"))' >> ~/.Rprofile
           Rscript -e 'install.packages("tidyverse", dependencies = TRUE, lib="~/Rlib")'
+          Rscript -e 'install.packages("tidycensus", dependencies = TRUE, lib="~/Rlib")'
           Rscript -e 'install.packages(c("jsonlite", "remotes", "magick", "usethis", "V8", "tidycensus", "httr"), dependencies = TRUE, lib="~/Rlib")'
           Rscript -e 'remotes::install_github("munichrocker/DatawRappr", lib="~/Rlib", auth_token=Sys.getenv("GITHUB_PAT"))'
           Rscript -e '.libPaths("~/Rlib"); if (!require("tidyverse", lib.loc = "~/Rlib")) stop("tidyverse did not install")'
@@ -65,9 +66,9 @@ jobs:
           GAS_MAP_KEY: ${{ secrets.GAS_MAP_KEY }}
 
 
-        run: |
-                . ~/.Renviron
-                Rscript "gas_scrape.R"
+      #  run: |
+             #   . ~/.Renviron
+             #   Rscript "gas_scrape.R"
 
       - name: Commit and rebase-push if changed
         env:
