@@ -145,7 +145,7 @@ if (!yesterday %in% colnames(old_data)){
     left_join(final_df %>%
                 select(county, price ), by ='county') %>%
     rename(!!yesterday := price)
-  write_csv(new_data, 'new_data.csv')} else{
+  write_csv(new_data, 'gas_prices.csv')} else{
   new_data <- old_data
 }
   
