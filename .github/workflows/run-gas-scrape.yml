@@ -66,9 +66,7 @@ jobs:
           GAS_MAP_KEY: ${{ secrets.GAS_MAP_KEY }}
 
 
-      #  run: |
-             #   . ~/.Renviron
-             #   Rscript "gas_scrape.R"
+      
 
       - name: Commit and rebase-push if changed
         env:
