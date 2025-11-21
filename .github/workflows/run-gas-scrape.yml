@@ -35,7 +35,11 @@ jobs:
             libfribidi-dev \
             libfontconfig1-dev \
             pandoc \
-            git
+            git \
+            libudunits2-dev \
+            libgdal-dev \
+            libgeos-dev \
+            libproj-dev
 
       - name: Cache R packages
         uses: actions/cache@v4
