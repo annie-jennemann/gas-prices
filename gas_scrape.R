@@ -163,8 +163,8 @@ dw_edit_chart(
   annotate = paste0("<i>Data as of ",today_head,"."),
   visualize = list(
     `table-tiny` = list(
-      columns = names(new_data) %>% (\(x) x[str_starts(x, "Nov\\.")])()
-)
+      columns = names(new_data) %>% (\(x) x[str_starts(x, "Nov\\.")])())
+))
 
 #Adding data to the chart
 dw_data_to_chart(new_data,
