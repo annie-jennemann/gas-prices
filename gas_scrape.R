@@ -147,7 +147,8 @@ if (!yesterday %in% colnames(old_data)){
     mutate(latest = price) %>%
     rename(!!yesterday := price)
   write_csv(new_data, 'gas_prices.csv')} else{
-  new_data <- old_data
+  new_data <- old_data %>%
+    mutate(latest = !!yesterday)
 }
   
 ###Datawrapper table
