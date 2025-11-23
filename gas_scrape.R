@@ -138,19 +138,6 @@ final_df <- all_data %>%
     price
   )
 
-
-#Now join them 
-if (!yesterday %in% colnames(old_data)){
-  new_data <- old_data %>%
-    left_join(final_df %>%
-                select(county, price ), by ='county') %>%
-    mutate(latest = price) %>%
-    rename(!!yesterday := price)
-  write_csv(new_data, 'gas_prices.csv')} else{
-  new_data <- old_data %>%
-    mutate(latest = .data[[yesterday]])
-}
-  
 ###Datawrapper table
 
 dw_edit_chart(
