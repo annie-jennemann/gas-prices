@@ -138,6 +138,8 @@ final_df <- all_data %>%
     price
   )
 
+new_data <- final_df
+
 ###Datawrapper table
 
 dw_edit_chart(
