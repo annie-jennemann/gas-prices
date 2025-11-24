@@ -210,7 +210,7 @@ dw_edit_chart(
   byline = 'Susie Webb/Get the Facts Data Team',
   source_name = 'AAA',
   source_url = 'aaa.com',
-  annotate = paste0("<i>Data as of ",today_head," and represents the previous day's average cost for regular gas.")
+  annotate = paste0("<i>Data as of ",today_head," and represents the previous day's average cost for regular gas. AAA only has gas data for Connecticut's old county boundaries.")
 )
 
 #Adding data to the chart
