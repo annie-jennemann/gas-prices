@@ -159,7 +159,7 @@ dw_publish_chart(gasTable)
 new_final_df <- final_df %>%
   mutate(
     GEOID = case_when(
-      state_name == "FL" & county == "De Soto" ~ "12245", 
+      state_name == "FL" & county == "De Soto" ~ "12027", 
       state_name == "AL" & county == "De Kalb" ~ "01049", 
       state_name == "AK" & county == "Juneau" ~ "02110", 
       state_name == "AK" & county == "Prince Wales Ketchikan" ~ "02201", 
