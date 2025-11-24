@@ -115,13 +115,6 @@ final_df <- all_data %>%
     county     = str_replace(name, "^Saint\\b", "St.")  # display: Saint -> St.
   ) %>%
   left_join(state_guess, by = "state_id") %>%
-mutate(
-    #Fix DeSoto
-    name_norm = if_else(
-      state_name == "Florida" & name_norm == "de soto",
-      "desoto",
-      name_norm
-    ) %>%
   left_join(
     fips_ref %>% select(state_name, county_name_norm, GEOID, statefp),
     by = c("state_name", "name_norm" = "county_name_norm")
