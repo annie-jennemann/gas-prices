@@ -27,7 +27,6 @@ yesterday <- format(as.Date(with_tz(Sys.time(), tz = 'America/New_York')) - 1, "
 old_data <- read_csv('gas_prices.csv')
 
 #Scraping today's gas data
-
 parse_url <- function(map_id) {
   url <- paste0("https://gasprices.aaa.com/index.php?premiumhtml5map_js_data=true&map_id=", map_id)
   response <- GET(url)
@@ -45,19 +44,16 @@ parse_url <- function(map_id) {
                   state_id = integer()))
   }
   
-  # Get the actual variable name (e.g., premiumhtml5map_map_cfg_12)
   var_name <- str_match(js_block, "var\\s+(premiumhtml5map_map_cfg_\\d+)\\s*=")[,2]
   
-  # Evaluate and extract map_data via V8
   ctx <- v8()
   ctx$eval(js_block)
   
-  # stringify only map_data
   json_map <- ctx$eval(paste0("JSON.stringify(", var_name, ".map_data)"))
   
   map_data <- fromJSON(json_map)
   
-  # Build dataframe: name + comment + ids
+  #Build df
   df <- map_data %>%
     map_dfr(~tibble(
       name = .x$name %||% NA_character_,
@@ -74,9 +70,9 @@ parse_url <- function(map_id) {
 all_data <- map_dfr(setdiff(1:52, 17), parse_url)
 
 
-#Join to FIPS first
+##Join to FIPS
 
-# Normalizer used for matching
+#Normalize the data
 norm_nm <- function(x) {
   x %>%
     str_to_lower() %>%
@@ -88,7 +84,6 @@ norm_nm <- function(x) {
     str_squish()
 }
 
-# Reference from tidycensus
 data("fips_codes", package = "tidycensus")
 fips_ref <- fips_codes %>%
   transmute(
@@ -101,7 +96,7 @@ fips_ref <- fips_codes %>%
   ) %>%
   distinct()
 
-# 1) Infer state_name for each state_id by overlap of county names
+#Infer state name
 state_guess <- all_data %>%
   mutate(name_norm = norm_nm(name)) %>%
   distinct(state_id, name_norm) %>%
@@ -114,13 +109,19 @@ state_guess <- all_data %>%
   slice_max(hits, n = 1, with_ties = FALSE) %>%
   ungroup()
 
-# 2) Join back to rows and attach FIPS on (state_name, county)
 final_df <- all_data %>%
   mutate(
     name_norm  = norm_nm(name),
     county     = str_replace(name, "^Saint\\b", "St.")  # display: Saint -> St.
   ) %>%
-  left_join(state_guess, by = "state_id") %>%  # adds inferred state_name
+  left_join(state_guess, by = "state_id") %>%
+mutate(
+    #Fix DeSoto
+    name_norm = if_else(
+      state_name == "Florida" & name_norm == "de soto",
+      "desoto",
+      name_norm
+    ) %>%
   left_join(
     fips_ref %>% select(state_name, county_name_norm, GEOID, statefp),
     by = c("state_name", "name_norm" = "county_name_norm")
