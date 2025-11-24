@@ -180,7 +180,7 @@ new_final_df <- final_df %>%
       state_name == "TX" & county == "De Witt" ~ "48123", 
       state_name == "VA" & county == "Bristol" ~ "51520", 
       state_name == "VA" & county == "Salem" ~ "51775", 
-      
+      state_name == "MO" & county == "Sainte Genevieve" ~ "29186", 
       TRUE ~ GEOID
     ),
     county = case_when(
