@@ -149,7 +149,7 @@ dw_edit_chart(
   byline = 'Susie Webb/Get the Facts Data Team',
   source_name = 'AAA',
   source_url = 'aaa.com',
-  annotate = paste0("<i>Data as of ",today_head," and represents the previous day's average regular gas cost. Any "NA" values means that there was not enough data to calcualte the price.")
+  annotate = paste0("<i>Data as of ",today_head," and represents the previous day's average regular gas cost. Any NA values mean that there was not enough data to calcualte the price.")
   )
 
 #Adding data to the chart
