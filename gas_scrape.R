@@ -205,7 +205,7 @@ new_final_df <- final_df %>%
 ###Datawrapper map
 dw_edit_chart(
   chart_id = gasMap,
-  title = 'Map of current gas prices',
+  title = 'Gas prices this Thanksgiving',
   intro = 'Here are the latest gas prices as drivers take to the roads for Thanskgiving holiday travel.',
   byline = 'Susie Webb/Get the Facts Data Team',
   source_name = 'AAA',
