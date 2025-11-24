@@ -156,6 +156,7 @@ dw_publish_chart(gasTable)
 
 ####Editing data for map
 
+
 new_final_df <- final_df %>%
   mutate(
     GEOID = case_when(
@@ -170,6 +171,15 @@ new_final_df <- final_df %>%
       state_name == "IL" & county == "De Kalb" ~ "17037", 
       state_name == "IL" & county == "Du Page" ~ "17043", 
       state_name == "IL" & county == "La Salle" ~ "17099", 
+      state_name == "IN" & county == "De Kalb" ~ "18033", 
+      state_name == "IN" & county == "La Porte" ~ "18091", 
+      state_name == "MD" & county == "Prince Georges" ~ "24033", 
+      state_name == "MD" & county == "Queen Annes" ~ "24035", 
+      state_name == "MD" & county == "St. Marys" ~ "24037", 
+      state_name == "MS" & county == "De Soto" ~ "28033", 
+      state_name == "TX" & county == "De Witt" ~ "48123", 
+      state_name == "VA" & county == "Bristol" ~ "51520", 
+      state_name == "VA" & county == "Salem" ~ "51775", 
       
       TRUE ~ GEOID
     ),
@@ -179,6 +189,11 @@ new_final_df <- final_df %>%
       state_name == "IL" & county == "Dewitt" ~ "De Witt", 
       state_name == "IL" & county == "De Kalb" ~ "DeKalb",
       state_name == "IL" & county == "Du Page" ~ "DuPage", 
+      state_name == "MD" & county == "Prince Georges" ~ "Prince George", 
+      state_name == "MD" & county == "Queen Annes" ~ "Queen Anne", 
+      state_name == "MD" & county == "St. Marys" ~ "St. Mary", 
+      state_name == "MS" & county == "De Soto" ~ "DeSoto", 
+      state_name == "TX" & county == "De Witt" ~ "DeWitt", 
       
       TRUE ~ county
     ))
