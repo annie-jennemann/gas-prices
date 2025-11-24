@@ -154,6 +154,38 @@ dw_data_to_chart(new_data,
 #Republishing the chart
 dw_publish_chart(gasTable)
 
+####Editing data for map
+
+new_final_df <- final_df %>%
+  mutate(
+    GEOID = case_when(
+      state_name == "FL" & county == "De Soto" ~ "12245", 
+      state_name == "AL" & county == "De Kalb" ~ "01049", 
+      state_name == "AK" & county == "Juneau" ~ "02110", 
+      state_name == "AK" & county == "Prince Wales Ketchikan" ~ "02201", 
+      state_name == "AK" & county == "Sitka" ~ "02220", 
+      state_name == "AK" & county == "Skagway Hoonah Angoon" ~ "02232", 
+      state_name == "AK" & county == "Yakutat" ~ "02282", 
+      state_name == "IL" & county == "Dewitt" ~ "17039", 
+      state_name == "IL" & county == "De Kalb" ~ "17037", 
+      state_name == "IL" & county == "Du Page" ~ "17043", 
+      state_name == "IL" & county == "La Salle" ~ "17099", 
+      
+      TRUE ~ GEOID
+    ),
+    county = case_when(
+      state_name == "FL" & county == "De Soto" ~ "DeSoto",
+      state_name == "AL" & county == "De Kalb" ~ "DeKalb",
+      state_name == "IL" & county == "Dewitt" ~ "De Witt", 
+      state_name == "IL" & county == "De Kalb" ~ "DeKalb",
+      state_name == "IL" & county == "Du Page" ~ "DuPage", 
+      
+      TRUE ~ county
+    ))
+  
+
+
+
 
 ###Datawrapper map
 dw_edit_chart(
@@ -167,7 +199,7 @@ dw_edit_chart(
 )
 
 #Adding data to the chart
-dw_data_to_chart(new_data,
+dw_data_to_chart(new_final_df,
                  chart_id = gasMap
 )
 
