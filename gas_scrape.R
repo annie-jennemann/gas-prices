@@ -71,7 +71,7 @@ parse_url <- function(map_id) {
 }
 
 #Run it through each state
-all_data <- map_dfr(1:52, parse_url) 
+all_data <- map_dfr(setdiff(1:52, 17), parse_url)
 
 
 #Join to FIPS first
