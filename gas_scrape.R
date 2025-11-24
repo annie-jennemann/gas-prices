@@ -206,7 +206,7 @@ new_final_df <- final_df %>%
 dw_edit_chart(
   chart_id = gasMap,
   title = 'Gas prices this Thanksgiving',
-  intro = 'Here are the latest gas prices as drivers take to the roads this week for Thanksgiving.',
+  intro = 'Here are the latest gas prices by county across the U.S. as drivers take to the roads this week for Thanksgiving.',
   byline = 'Susie Webb/Get the Facts Data Team',
   source_name = 'AAA',
   source_url = 'aaa.com',
