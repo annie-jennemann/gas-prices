@@ -144,8 +144,8 @@ new_data <- final_df
 
 dw_edit_chart(
   chart_id = gasTable,
-  title = 'Current as prices by county across the U.S.',
-  intro = 'Search for your county in the table below to see what gas prices may look like for you throughout Thanksgiving Week',
+  title = 'Current gas prices by county across the U.S.',
+  intro = "Search by county in the table below to see what the gas prices are where you're traveling throughout Thanksgiving Week",
   byline = 'Susie Webb/Get the Facts Data Team',
   source_name = 'AAA',
   source_url = 'aaa.com',
