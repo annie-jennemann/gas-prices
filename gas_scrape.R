@@ -165,11 +165,11 @@ dw_publish_chart(gasTable)
 dw_edit_chart(
   chart_id = gasMap,
   title = 'Map of current as prices by county across the U.S.',
-  intro = 'Search for your county in the table below to see what gas prices may look like for you throughout Thanksgiving Week',
+  intro = 'Here are the latest gas prices as drivers take to the roads for Thanskgiving holiday travel.',
   byline = 'Susie Webb/Get the Facts Data Team',
   source_name = 'AAA',
   source_url = 'aaa.com',
-  annotate = paste0("<i>Data as of ",today_head,".")
+  annotate = paste0("<i>Data as of ",today_head," and represents the previous day's average regular gas cost.")
 )
 
 #Adding data to the chart
