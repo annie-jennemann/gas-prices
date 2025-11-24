@@ -139,7 +139,7 @@ new_data <- final_df
 dw_edit_chart(
   chart_id = gasTable,
   title = 'Current gas prices by county across the U.S.',
-  intro = "Search by county in the table below to see what the gas prices are where you're traveling throughout Thanksgiving week. Table is sorted by most expensive to least expensive.",
+  intro = "Search by county in the table below to see what the gas prices are where you're traveling throughout Thanksgiving week. The table is sorted by most expensive to least expensive.",
   byline = 'Susie Webb/Get the Facts Data Team',
   source_name = 'AAA',
   source_url = 'aaa.com',
