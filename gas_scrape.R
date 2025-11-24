@@ -84,7 +84,7 @@ norm_nm <- function(x) {
     str_replace_all("[^a-z0-9 ]", " ") %>%
     str_squish() %>%
     str_replace_all("\\bsaint\\b", "st") %>%  # Saint -> st (matching)
-    str_replace("\\s+(county|parish|borough|census area|municipality|city)$", "") %>%
+    str_replace("\\s+(county|parish|borough|census area|municipality)$", "") %>%
     str_squish()
 }
 
