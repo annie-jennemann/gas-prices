@@ -19,9 +19,11 @@ datawrapper_auth(api_key =  api_key, overwrite=TRUE)
 
 #Marking today's date
 today_head <- format(as.POSIXct(Sys.time(), tz = "America/New_York"), "%b. %d")
+today_head <- sub("\\. 0", ". ", today_head)
 today_head
 
 yesterday <- format(as.Date(with_tz(Sys.time(), tz = 'America/New_York')) - 1, "%b. %d")
+yesterday <- sub("\\. 0", ". ", yesterday)
 
 #Loading in the old data
 old_data <- read_csv('gas_prices.csv')
