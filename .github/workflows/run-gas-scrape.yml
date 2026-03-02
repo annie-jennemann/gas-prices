@@ -66,7 +66,6 @@ jobs:
       - name: Run scraper
         env:
           API_KEY: ${{ secrets.API_KEY }}
-          GAS_TABLE_KEY: ${{ secrets.GAS_TABLE_KEY }}
           GAS_MAP_KEY: ${{ secrets.GAS_MAP_KEY }}
 
         run: |
