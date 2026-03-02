@@ -11,7 +11,6 @@ library(tidycensus)
 
 ##Loading in DW cues
 api_key <- Sys.getenv("API_KEY")
-gasTable <- Sys.getenv("GAS_TABLE_KEY")
 gasMap <- Sys.getenv("GAS_MAP_KEY")
 
 datawrapper_auth(api_key =  api_key, overwrite=TRUE)
@@ -135,26 +134,6 @@ final_df <- all_data %>%
   )
 
 new_data <- final_df
-
-###Datawrapper table
-
-dw_edit_chart(
-  chart_id = gasTable,
-  title = paste0('Current gas prices by county across the U.S. as of ', today_head),
-  intro = "Search by county in the table below to see what the gas prices are where you're traveling this holiday season. The table is sorted from most to least expensive.",
-  byline = 'Susie Webb/Get the Facts Data Team',
-  source_name = 'AAA',
-  source_url = 'aaa.com',
-  annotate = paste0("<i>Data will update daily and represents the previous day's average cost for regular gas. Any NA values mean that there was not enough data to calculate the price.")
-  )
-
-#Adding data to the chart
-dw_data_to_chart(new_data,
-                 chart_id = gasTable
-)
-
-#Republishing the chart
-dw_publish_chart(gasTable)
 
 ####Editing data for map
 
